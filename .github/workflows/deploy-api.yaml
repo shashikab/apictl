@@ -20,6 +20,7 @@ jobs:
           chmod +x /usr/local/bin/apictl
           # Add /usr/local/bin to PATH so that apictl is available in later steps
           export PATH=/usr/local/bin:$PATH
+          echo "/usr/local/bin" >> $GITHUB_PATH
           apictl version
 
       - name: List contents of current directory

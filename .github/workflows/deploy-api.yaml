@@ -8,7 +8,7 @@ jobs:
   deploy-api:
     runs-on: macos-latest
 
-      steps:
+    steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 

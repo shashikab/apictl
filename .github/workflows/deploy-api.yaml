@@ -14,14 +14,31 @@ jobs:
 
       - name: Install apictl
         run: |
-          curl -L -o apictl.tar.gz https://github.com/wso2/product-apim-tooling/releases/download/v4.4.0/apictl-4.4.0-darwin-arm64.tar.gz
-          tar -xzvf apictl.tar.gz
-          sudo mv apictl /usr/local/bin/apictl
-          chmod +x /usr/local/bin/apictl
-          # Add /usr/local/bin to PATH so that apictl is available in later steps
-          export PATH=/usr/local/bin:$PATH
-          echo "/usr/local/bin" >> $GITHUB_PATH
-          apictl version
+         # Download the tarball
+         curl -L -o apictl.tar.gz https://github.com/wso2/product-apim-tooling/releases/download/v4.4.0/apictl-4.4.0-darwin-arm64.tar.gz
+         # Extract the tarball
+         tar -xzvf apictl.tar.gz
+         # List the extracted files to check the structure
+          ls -la
+           # Check if the binary is extracted directly or inside a folder
+           if [ -f "./apictl" ]; then
+             echo "Found apictl binary in current directory."
+           sudo mv ./apictl /usr/local/bin/apictl
+           elif [ -f "./apictl/apictl" ]; then
+             echo "Found apictl binary in the apictl folder."
+            sudo mv ./apictl/apictl /usr/local/bin/apictl
+           else
+            echo "apictl binary not found!"
+           exit 1
+           fi
+           # Make the binary executable
+           chmod +x /usr/local/bin/apictl
+           # Update PATH for this step and subsequent steps
+           export PATH=/usr/local/bin:$PATH
+           echo "/usr/local/bin" >> $GITHUB_PATH
+           # Verify installation
+           apictl version
+
 
       - name: List contents of current directory
         run: ls -la

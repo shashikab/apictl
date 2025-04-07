@@ -21,7 +21,7 @@ jobs:
 
           chmod +x /usr/local/bin/apictl
           echo "$(pwd)"
-          export PATH=$PATH:$(pwd)
+          export PATH="$PATH:$(pwd)"
           echo "$PATH"
           apictl version
 

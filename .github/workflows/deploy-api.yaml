@@ -17,7 +17,6 @@ jobs:
           curl -L -o apictl.tar.gz https://github.com/wso2/product-apim-tooling/releases/download/v4.4.0/apictl-4.4.0-darwin-arm64.tar.gz
           tar -xzvf apictl.tar.gz
           chmod +x apictl
-          sudo mv apictl /usr/local/bin/apictl
           export PATH="$PATH:$(pwd)"
       
 

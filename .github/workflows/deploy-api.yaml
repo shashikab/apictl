@@ -18,7 +18,7 @@ jobs:
           tar -xzvf apictl.tar.gz
           chmod +x apictl
           sudo mv apictl /usr/local/bin/apictl
-
+          export PATH="$PATH:$(pwd)"
       
 
       - name: Configure APIM environment

@@ -9,17 +9,9 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Set up Homebrew
+      - name: Clone repository using git clone
         run: |
-         echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
-         brew tap wso2/tap
-        
-      - name: Install apictl
-        run: |
-          brew install wso2/tap/apictl
+          git clone https://github.com/apictl.git
 
       - name: Configure APIM environment
         run: |

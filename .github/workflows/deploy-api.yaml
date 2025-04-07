@@ -15,7 +15,8 @@ jobs:
 
       - name: Copy apictl folder to current working directory
         run: |
-           cp -R /Users/shashika/Desktop/APIMPOCVIDURA/apictl .
+           cp -R apictl /Users/shashika/Desktop/APIMPOCVIDURA/
+
       - name: Configure APIM environment
         run: |
           apictl remove-env dev || true

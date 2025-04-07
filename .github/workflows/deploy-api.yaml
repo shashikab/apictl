@@ -18,7 +18,7 @@ jobs:
           tar -xzvf apictl.tar.gz -C ./
           chmod +x ./apictl
           echo "$(pwd)"
-          export PATH="$PATH:./apictl"
+          export PATH="$PATH:/Users/runner"
 
       - name: List contents of current directory
         run: ls -la

@@ -22,8 +22,8 @@ jobs:
           chmod +x /usr/local/bin/apictl
           echo "$(pwd)"
           export PATH="$PATH:$(pwd)"
-          echo "$PATH"
           apictl version
+          echo "$PATH" >> $GITHUB_PATH
 
       - name: List contents of current directory
         run: ls -la

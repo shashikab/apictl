@@ -1,4 +1,4 @@
-name: Deploy API to WSO2 APIM on macOS
+name: Deploy API to WSO2 APIM on mac OS
 
 on:
   push:

@@ -45,8 +45,8 @@ jobs:
       
       - name: Configure APIM environment
         run: |
-          apictl remove-env dev || true
-          apictl add-env dev --apim https://localhost:9443
+          apictl remove env dev || true
+          apictl add env dev --apim https://localhost:9443
 
       - name: Login to APIM
         run: |
@@ -54,4 +54,4 @@ jobs:
 
       - name: Import API project
         run: |
-          apictl import-api --file ./SampleAPI --environment dev -k --rotate-revision
+          apictl import api --file ./SampleAPI --environment dev -k --rotate-revision

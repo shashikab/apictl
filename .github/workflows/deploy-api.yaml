@@ -1,6 +1,32 @@
-#!/bin/bash
-# Step 1: Log in to APIM
-apictl login dev --insecure -u admin -p admin
+name: Deploy API to WSO2 APIM on macOS
 
-# Step 2: Import (or update) the API project
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy-api:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install apictl
+        run: |
+          curl -L -o apictl https://github.com/wso2/product-apim-tooling/releases/download/v4.5.0/apictl-darwin-amd64
+          chmod +x apictl
+          sudo mv apictl /usr/local/bin/apictl
+
+      - name: Configure APIM environment
+        run: |
+          apictl remove-env dev || true
+          ./apictl add env dev --apim https://localhost:9443
+
+      - name: Login to APIM
+        run: |
+          apictl login dev --insecure -u ${{ secrets.APIM_USERNAME }} -p ${{ secrets.APIM_PASSWORD }}
+
+      - name: Import API project
+        run: |
 ./apictl import api --file ./SampleAPI --environment dev -k --rotate-revision

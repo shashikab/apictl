@@ -15,10 +15,12 @@ jobs:
       - name: Install apictl
         run: |
           curl -L -o apictl.tar.gz https://github.com/wso2/product-apim-tooling/releases/download/v4.4.0/apictl-4.4.0-darwin-arm64.tar.gz
-          tar -xzvf apictl.tar.gz -C /Users/runner
-          chmod +x /Users/runner/apictl
+          tar -xzvf apictl.tar.gz
           echo "$(pwd)"
-          export PATH="$PATH:/Users/runner/apictl"
+
+          chmod +x apictl
+          echo "$(pwd)"
+          export PATH="$PATH:apictl"
 
       - name: List contents of current directory
         run: ls -la

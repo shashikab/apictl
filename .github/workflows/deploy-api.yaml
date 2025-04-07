@@ -19,7 +19,7 @@ jobs:
           sudo mv apictl /usr/local/bin/apictl
           echo "$(cwd)"
 
-          chmod +x apictl
+          chmod +x /usr/local/bin/apictl
           echo "$(pwd)"
           export PATH=$PATH:$(pwd)
           echo "$PATH"

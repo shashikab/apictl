@@ -12,6 +12,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Set up Homebrew
+        run: |
+         echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+         brew tap wso2/tap
+        
       - name: Install apictl
         run: |
           brew install wso2/tap/apictl

@@ -15,7 +15,7 @@ jobs:
 
       - name: Copy apictl folder to current working directory
         run: |
-           cp -R apictl .
+           cp -R SampleAPI/apictl .
 
       - name: Configure APIM environment
         run: |

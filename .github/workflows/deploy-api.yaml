@@ -19,7 +19,7 @@ jobs:
           sudo mv apictl /usr/local/bin/apictl
           chmod +x /usr/local/bin/apictl
           # Add /usr/local/bin to PATH so that apictl is available in later steps
-          echo "/usr/local/bin" >> $GITHUB_PATH
+          export PATH=/usr/local/bin:$PATH
           apictl version
 
       - name: List contents of current directory

@@ -29,4 +29,4 @@ jobs:
 
       - name: Import API project
         run: |
-./apictl import api --file ./SampleAPI --environment dev -k --rotate-revision
+          ./apictl import api --file ./SampleAPI --environment dev -k --rotate-revision

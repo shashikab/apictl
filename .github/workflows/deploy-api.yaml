@@ -12,7 +12,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-     
+      - name: Install apictl
+        run: |
+          brew install wso2/tap/apictl
 
       - name: Configure APIM environment
         run: |

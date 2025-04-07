@@ -17,22 +17,18 @@ jobs:
           curl -L -o apictl.tar.gz https://github.com/wso2/product-apim-tooling/releases/download/v4.4.0/apictl-4.4.0-darwin-arm64.tar.gz
           tar -xzvf apictl.tar.gz
           sudo mv apictl /usr/local/bin/apictl
-          echo "$(cwd)"
-
           chmod +x /usr/local/bin/apictl
-          echo "$(pwd)"
-          export PATH="$PATH:$(pwd)"
+          # Add /usr/local/bin to PATH so that apictl is available in later steps
+          echo "/usr/local/bin" >> $GITHUB_PATH
           apictl version
-          echo "$PATH" >> $GITHUB_PATH
 
       - name: List contents of current directory
         run: ls -la
       
-
       - name: Configure APIM environment
         run: |
           apictl remove-env dev || true
-          apictl add env dev --apim https://localhost:9443
+          apictl add-env dev --apim https://localhost:9443
 
       - name: Login to APIM
         run: |
@@ -40,4 +36,4 @@ jobs:
 
       - name: Import API project
         run: |
-          apictl import api --file ./SampleAPI --environment dev -k --rotate-revision
+          apictl import-api --file ./SampleAPI --environment dev -k --rotate-revision

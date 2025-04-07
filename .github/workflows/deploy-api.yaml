@@ -1,0 +1,27 @@
+name: Deploy API to WSO2 APIM
+
+# This tells GitHub to run these instructions every time you push changes to the main branch.
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy-api:
+    runs-on: ubuntu-latest  # This means the robot will run on a Linux computer provided by GitHub
+
+    steps:
+      # Step 1: Get your code from GitHub.
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      
+
+      # Step 4: Log in to WSO2 API Manager using your username and password.
+      - name: Login to APIM
+        run: |
+          apictl login dev --insecure -u ${{ secrets.APIM_USERNAME }} -p ${{ secrets.APIM_PASSWORD }}
+
+      # Step 5: Send your API project to the API Manager to update or deploy it.
+      - name: Import API project
+        run: |
+          apictl import-api -f petstore --environment dev --update --insecure

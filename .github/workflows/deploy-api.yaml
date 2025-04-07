@@ -20,7 +20,7 @@ jobs:
 
           chmod +x apictl
           echo "$(pwd)"
-          export PATH="$PATH:/apictl"
+          export PATH=$PATH:/apictl
 
       - name: List contents of current directory
         run: ls -la

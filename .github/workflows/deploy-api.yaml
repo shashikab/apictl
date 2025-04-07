@@ -18,6 +18,9 @@ jobs:
           tar -xzvf apictl.tar.gz
           chmod +x apictl
           export PATH="$PATH:$(pwd)"
+
+      - name: List contents of current directory
+        run: ls -la
       
 
       - name: Configure APIM environment

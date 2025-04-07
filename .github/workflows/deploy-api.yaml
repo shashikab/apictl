@@ -50,8 +50,7 @@ jobs:
 
       - name: Login to APIM
         run: |
-         echo "${{ secrets.APIM_PASSWORD }}" | apictl login dev --insecure -u ${{ secrets.APIM_USERNAME }} --password-stdin
-
+          echo "${{ secrets.APIM_PASSWORD }}" | apictl login dev --insecure -u ${{ secrets.APIM_USERNAME }} --password-stdin
 
       - name: Import API project
         run: |

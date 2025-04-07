@@ -12,6 +12,14 @@ jobs:
       - name: Clone repository using git clone
         run: |
           git clone https://github.com/shashikab/apictl.git
+
+      - name: List directory contents
+        run: |
+         ls -R
+      - name: Copy apictl folder to current working directory
+        run: |
+         cp -R /apictl/SampleAPI/apictl .
+
       - name: Configure APIM environment
         run: |
           apictl remove-env dev || true

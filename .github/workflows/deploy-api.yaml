@@ -23,6 +23,7 @@ jobs:
           echo "$(pwd)"
           export PATH=$PATH:$(pwd)
           echo "$PATH"
+          apictl version
 
       - name: List contents of current directory
         run: ls -la

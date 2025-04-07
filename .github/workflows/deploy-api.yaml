@@ -12,11 +12,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install apictl
-        run: |
-          curl -L -o apictl https://github.com/wso2/product-apim-tooling/releases/download/v4.5.0/apictl-darwin-amd64
-          chmod +x apictl
-          sudo mv apictl /usr/local/bin/apictl
+      
 
       - name: Configure APIM environment
         run: |

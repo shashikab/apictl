@@ -10,31 +10,31 @@ jobs:
 
     steps:
       # Step 1: Check out your repository code.
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      #- name: Checkout repository
+      #  uses: actions/checkout@v3
 
       # Step 2: Install apictl for macOS.
-      - name: Install apictl
-        run: |
-          # Download the darwin binary for macOS (v4.5.0 in this example)
-          curl -L -o apictl https://github.com/wso2/product-apim-tooling/releases/download/v4.5.0/apictl-darwin-amd64
-          chmod +x apictl
-          # Move the binary to a location in PATH
-          sudo mv apictl /usr/local/bin/apictl
+      #- name: Install apictl
+      #  run: |
+      #    # Download the darwin binary for macOS (v4.5.0 in this example)
+       #   curl -L -o apictl https://github.com/wso2/product-apim-tooling/releases/download/v4.5.0/apictl-darwin-amd64
+       #   chmod +x apictl
+        ##  # Move the binary to a location in PATH
+        #  sudo mv apictl /usr/local/bin/apictl
 
       # Step 3: Configure the WSO2 APIM environment.
-      - name: Configure APIM environment
-        run: |
-          # Remove any existing 'dev' environment (ignore errors if not present)
-          apictl remove-env dev || true
-          # Add a new environment with your APIM endpoints.
-          # Replace <your-apim-host> with your actual API Manager host.
-          apictl add env dev \
-            --apim https://<your-apim-host>:9443 \
-            --publisher https://<your-apim-host>:9443/api/am/publisher/v1 \
-            --token https://<your-apim-host>:9443/oauth2/token \
-            --devportal https://<your-apim-host>:9443/api/am/devportal/v1 \
-            --admin https://<your-apim-host>:9443/api/am/admin/v1
+     # - name: Configure APIM environment
+      #  run: |
+      #    # Remove any existing 'dev' environment (ignore errors if not present)
+       #   apictl remove-env dev || true
+       #   # Add a new environment with your APIM endpoints.
+        #  # Replace <your-apim-host> with your actual API Manager host.
+        #  apictl add env dev \
+        #    --apim https://<your-apim-host>:9443 \
+        #    --publisher https://<your-apim-host>:9443/api/am/publisher/v1 \
+        #    --token https://<your-apim-host>:9443/oauth2/token \
+         #   --devportal https://<your-apim-host>:9443/api/am/devportal/v1 \
+         #   --admin https://<your-apim-host>:9443/api/am/admin/v1
 
       # Step 4: Log in to WSO2 APIM using credentials stored in GitHub Secrets.
       - name: Login to APIM
@@ -45,4 +45,4 @@ jobs:
       # This assumes your API project is in a folder named 'petstore' in your repository.
       - name: Import API project
         run: |
-          apictl import-api -f petstore --environment dev --update --insecure
+          apictl import-api -f SampleAPI --environment dev --update --insecure

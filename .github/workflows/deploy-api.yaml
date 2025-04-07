@@ -1,27 +1,26 @@
-name: Deploy API to WSO2 APIM
+name: Deploy API to WSO2 APIM on macOS
 
-# This tells GitHub to run these instructions every time you push changes to the main branch.
 on:
   push:
     branches: [ main ]
 
 jobs:
   deploy-api:
-    runs-on: ubuntu-latest  # This means the robot will run on a Linux computer provided by GitHub
+    runs-on: macos-latest
 
     steps:
-      # Step 1: Get your code from GitHub.
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Clone repository using git clone
+        run: |
+          git clone https://github.com/shashikab/apictl.git
+      - name: Configure APIM environment
+        run: |
+          apictl remove-env dev || true
+          apictl add env dev --apim https://localhost:9443
 
-      
-
-      # Step 4: Log in to WSO2 API Manager using your username and password.
       - name: Login to APIM
         run: |
           apictl login dev --insecure -u ${{ secrets.APIM_USERNAME }} -p ${{ secrets.APIM_PASSWORD }}
 
-      # Step 5: Send your API project to the API Manager to update or deploy it.
       - name: Import API project
         run: |
-          apictl import-api -f petstore --environment dev --update --insecure
+          apictl import api --file ./SampleAPI --environment dev -k --rotate-revision

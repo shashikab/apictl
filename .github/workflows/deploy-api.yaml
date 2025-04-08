@@ -49,7 +49,7 @@ jobs:
           apictl add env dev --apim https://localhost:9443
       - name: Login to APIM
         run: |
-          apictl login dev -u admin -p admin -k
+          apictl login dev -u admin -p admin -k --verbose
       - name: Import API project
         run: |
           apictl import api --file ./SampleAPI --environment dev -k --rotate-revision

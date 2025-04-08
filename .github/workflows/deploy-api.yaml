@@ -40,6 +40,10 @@ jobs:
            apictl version
            export APICTL_TIMEOUT=120
 
+      - name: Check network connectivity
+        run: |
+         ping -c 4 2048-203-94-95-14.ngrok-free.app
+        
       - name: List contents of current directory
         run: ls -la
       

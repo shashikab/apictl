@@ -49,9 +49,8 @@ jobs:
           apictl add env dev --apim https://localhost:9443
       - name: Login to APIM
         run: |
-           lsof -i:9443
 
-           echo "admin" | apictl login dev --insecure -u admin --password-stdin
+           echo "admin" | apictl login dev --insecure -u admin --password-stdin -k
       - name: Import API project
         run: |
           apictl import api --file ./SampleAPI --environment dev -k --rotate-revision

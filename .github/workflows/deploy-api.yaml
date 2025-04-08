@@ -51,8 +51,7 @@ jobs:
       - name: Login to APIM
         run: |
            #curl -k https://localhost:9443/publisher
-           netstat -an | grep 9443
-
+           apictl version
            echo "admin" | apictl login dev --insecure -u admin --password-stdin -k
       - name: Import API project
         run: |

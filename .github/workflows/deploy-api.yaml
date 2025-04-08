@@ -60,3 +60,5 @@ jobs:
       - name: Import API project
         run: |
           apictl import api --file ./SampleAPI --environment dev -k --rotate-revision
+    env:
+        APICLIENT_TIMEOUT: 60

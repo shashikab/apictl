@@ -50,7 +50,7 @@ jobs:
           apictl add env dev --apim https://2048-203-94-95-14.ngrok-free.app:9443
       - name: Login to APIM
         run: |
-           curl -k https://dev.wso2shashika.com:9443/publisher
+           #curl -k https://dev.wso2shashika.com:9443/publisher
            apictl version
            echo "admin" | apictl login dev --insecure -u admin --password-stdin -k
       - name: Import API project

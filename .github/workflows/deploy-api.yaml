@@ -6,7 +6,8 @@ on:
 
 jobs:
   deploy-api:
-    runs-on: macos-latest
+    #runs-on: macos-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout repository

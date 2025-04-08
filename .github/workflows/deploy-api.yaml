@@ -49,7 +49,7 @@ jobs:
           apictl add env dev --apim https://localhost:9443 --publisher https://localhost:9443/publisher
       - name: Login to APIM
         run: |
-           curl -k https://localhost:9443/publisher
+           #curl -k https://localhost:9443/publisher
 
            echo "admin" | apictl login dev --insecure -u admin --password-stdin -k
       - name: Import API project

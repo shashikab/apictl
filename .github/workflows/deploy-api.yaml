@@ -47,7 +47,7 @@ jobs:
         run: |
           #apictl remove env dev || true
 
-          apictl add env dev --apim https://localhost:9443 --publisher https://localhost:9443/publisher
+          apictl add env dev --apim https://dev.wso2shashika.com:9443
       - name: Login to APIM
         run: |
            #curl -k https://localhost:9443/publisher

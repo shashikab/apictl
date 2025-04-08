@@ -46,12 +46,12 @@ jobs:
       - name: Configure APIM environment
         run: |
           #apictl remove env dev || true
-          netstat -an | grep 9443
 
           apictl add env dev --apim https://localhost:9443 --publisher https://localhost:9443/publisher
       - name: Login to APIM
         run: |
            #curl -k https://localhost:9443/publisher
+           netstat -an | grep 9443
 
            echo "admin" | apictl login dev --insecure -u admin --password-stdin -k
       - name: Import API project

@@ -42,7 +42,7 @@ jobs:
 
       - name: Check network connectivity
         run: |
-         ping -c 4 2048-203-94-95-14.ngrok-free.app
+         ping -c 4 520e-203-94-95-14.ngrok-free.app
         
       - name: List contents of current directory
         run: ls -la
@@ -50,6 +50,7 @@ jobs:
       - name: Configure APIM environment
         run: |
           #apictl remove env dev || true
+          export APICLIENT_TIMEOUT=120
 
           apictl add env dev --apim https://520e-203-94-95-14.ngrok-free.app
       - name: Login to APIM

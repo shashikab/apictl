@@ -51,7 +51,7 @@ jobs:
         run: |
           #apictl remove env dev || true
 
-          apictl add env dev --apim https://2048-203-94-95-14.ngrok-free.app
+          apictl add env dev --apim https://520e-203-94-95-14.ngrok-free.app
       - name: Login to APIM
         run: |
            #curl -k https://dev.wso2shashika.com:9443/publisher

@@ -38,7 +38,7 @@ jobs:
            echo "/usr/local/bin" >> $GITHUB_PATH
            # Verify installation
            apictl version
-
+           export APICTL_TIMEOUT=120
 
       - name: List contents of current directory
         run: ls -la
